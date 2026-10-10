@@ -1,0 +1,21 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0f172a">
+<link rel="apple-touch-icon" href="icon.svg"><title>頭型掃描 · 眼鏡配適</title>
+<style>
+body{margin:0;font:16px/1.5 system-ui,sans-serif;background:#0f172a;color:#e2e8f0;padding:env(safe-area-inset-top) 12px env(safe-area-inset-bottom)}
+h1{font-size:20px}label{display:block;margin:8px 0}input,select,button{font:inherit;padding:8px;border-radius:8px;border:1px solid #475569;background:#1e293b;color:inherit}
+button{background:#0891b2;border:0;margin:6px 6px 6px 0}#stage{position:relative;margin:8px 0}
+#stage video,#stage canvas{width:100%;transform:scaleX(-1);display:block;border-radius:12px;background:#000}#stage canvas{position:absolute;left:0;top:0}
+progress{width:100%}table{width:100%;border-collapse:collapse}td{padding:5px 4px;border-bottom:1px solid #334155}td:nth-child(2){text-align:right;font-weight:600}small{color:#94a3b8}
+</style></head><body><main>
+<h1>頭型掃描 · 眼鏡配適</h1>
+<label>縮放校正 <select id="mode"><option value="iris">虹膜平均直徑 11.7 mm（免輸入）</option><option value="pd">輸入已知瞳距 PD</option></select></label>
+<input id="pd" type="number" step="0.5" placeholder="PD（mm），例如 63" hidden>
+<label>鼻樑寬 DBL（mm）<input id="dbl" type="number" value="18" style="width:80px"></label>
+<button id="go">開始掃描</button>
+<div id="stage"><video id="v" playsinline muted></video><canvas id="c"></canvas></div>
+<p id="msg">手機距離臉約 30–40 cm，光線均勻，拿掉眼鏡、撥開瀏海。</p><progress id="bar" max="20" value="0"></progress>
+<section id="out" hidden><h2>量測結果</h2><table id="tbl"></table><p><small id="note"></small></p>
+<button id="ply">匯出 3D 點雲 (.ply)</button><button id="json">匯出尺寸 (.json)</button></section>
+</main><script type="module" src="app.js"></script></body></html>
